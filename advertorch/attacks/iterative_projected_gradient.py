@@ -63,6 +63,11 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
     delta.requires_grad_()
     for ii in range(nb_iter):
         outputs = predict(xvar + delta)
+        if isinstance(outputs, dict):
+            outputs = outputs['logits']
+            # div_output = outputs['div']
+        else:
+            outputs = outputs
         loss = loss_fn(outputs, yvar)
         if minimize:
             loss = -loss
