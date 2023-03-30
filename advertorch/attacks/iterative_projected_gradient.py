@@ -62,14 +62,14 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
 
     delta.requires_grad_()
     for ii in range(nb_iter):
-        with torch.cuda.amp.autocast():
-            outputs = predict(xvar + delta)
-            if isinstance(outputs, dict):
-                outputs = outputs['logits']
-                # div_output = outputs['div']
-            else:
-                outputs = outputs
-            loss = loss_fn(outputs, yvar)
+        outputs = predict(xvar + delta)
+        if isinstance(outputs, dict):
+            outputs = outputs['logits']
+            # div_output = outputs['div']
+        else:
+            outputs = outputs
+        loss = loss_fn(outputs, yvar)
+        loss.requires_grad = True
         if minimize:
             loss = -loss
 
