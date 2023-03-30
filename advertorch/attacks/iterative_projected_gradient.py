@@ -66,6 +66,7 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
         outputs = predict(xvar + delta)
         print(outputs)
         if isinstance(outputs, dict):
+            print("outputs is a dict")
             outputs = outputs['logits']
             # div_output = outputs['div']
         else:
