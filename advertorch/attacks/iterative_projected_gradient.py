@@ -179,7 +179,7 @@ class PGDAttack(Attack, LabelMixin):
         :return: tensor containing perturbed inputs.
         """
         x, y = self._verify_and_process_inputs(x, y)
-
+        print("perturbing...")
         delta = torch.zeros_like(x)
         delta = nn.Parameter(delta)
         if self.rand_init:
