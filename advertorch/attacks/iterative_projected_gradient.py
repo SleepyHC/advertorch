@@ -65,6 +65,7 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
         outputs = predict(xvar + delta)
         if isinstance(outputs, dict):
             outputs = outputs['logits']
+            outputs.requires_grad=True
             # div_output = outputs['div']
         else:
             outputs = outputs
