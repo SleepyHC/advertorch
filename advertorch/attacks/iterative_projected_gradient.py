@@ -74,7 +74,7 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
                 outputs = outputs
 
             print(outputs,outputs.grad)
-            loss = loss_fn(outputs, yvar)
+            loss = nn.CrossEntropyLoss(outputs, yvar)
             print(loss,yvar)
             loss = torch.autograd.Variable(loss, requires_grad = True)
             print("after variable")
