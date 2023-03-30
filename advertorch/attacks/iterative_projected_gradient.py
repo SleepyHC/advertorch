@@ -185,7 +185,8 @@ class PGDAttack(Attack, LabelMixin):
                   - if self.targeted=True, then y must be the targeted labels.
         :return: tensor containing perturbed inputs.
         """
-        x, y = self._verify_and_process_inputs(x, y)
+        # x, y = self._verify_and_process_inputs(x, y)
+        # deleted
         delta = torch.zeros_like(x)
         delta = nn.Parameter(delta)
         if self.rand_init:
