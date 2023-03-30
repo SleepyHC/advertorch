@@ -61,22 +61,22 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
         delta = torch.zeros_like(xvar)
 
     delta.requires_grad_()
-    print('nb_iter=',nb_iter)
+    # print('nb_iter=',nb_iter)
     for ii in range(nb_iter):
         with torch.cuda.amp.autocast():
             outputs = predict(xvar + delta)
-            print(outputs)
+            # print(outputs)
             if isinstance(outputs, dict):
-                print("outputs is a dict")
+                # print("outputs is a dict")
                 outputs = outputs['logits']
                 # div_output = outputs['div']
             else:
                 outputs = outputs
 
-            print(outputs,outputs.grad)
+            # print(outputs,outputs.grad)
             loss = loss_fn(outputs, yvar)
             # loss_fn
-            print(loss,yvar)
+            # print(loss,yvar)
             loss = torch.autograd.Variable(loss, requires_grad = True)
             print("after variable")
             loss = loss.retain_grad()
