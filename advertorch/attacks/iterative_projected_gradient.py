@@ -77,9 +77,9 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
             loss = loss_fn(outputs, yvar)
             # loss_fn
             # print(loss,yvar)
-            loss = torch.autograd.Variable(loss, requires_grad = True)
-            print("after variable")
-            loss = loss.retain_grad()
+            # loss = torch.autograd.Variable(loss, requires_grad = True)
+            # # print("after variable")
+            # loss = loss.retain_grad()
             if minimize:
                 loss = -loss
 
