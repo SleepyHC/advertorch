@@ -61,6 +61,7 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
         delta = torch.zeros_like(xvar)
 
     delta.requires_grad_()
+    print('nb_iter=',nb_iter)
     for ii in range(nb_iter):
         outputs = predict(xvar + delta)
         if isinstance(outputs, dict):
