@@ -73,7 +73,8 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
             outputs = outputs
 
         print(outputs,outputs.grad)
-        loss = loss_fn(outputs, yvar).requires_grad_()
+        loss = loss_fn(outputs, yvar)
+        loss = Variable(loss, requires_grad = True)
         loss = loss.retain_grad()
         if minimize:
             loss = -loss
